@@ -37,7 +37,7 @@ res.status(201).json({
       email: email,
 
     },
-})
+});
 
 };
 
@@ -52,7 +52,23 @@ const login = async (req, res) => {
 
     if(!user){
         return res.status(400).json({error: "Invalid Email or Password"});
-    };
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if(!isPasswordValid){
+        return res.status(400).json({error: "invalid Email or Password"});
+    }
+
+    res.status(201).json({
+    status: "Succes",
+    data: {
+      id: user.id,
+      
+      email: email,
+
+    },
+});
 
 };
 export {register, login};
