@@ -17,7 +17,28 @@ const server = app.listen(PORT, () => {
    console.log(`Server running on PORT ${PORT}`);
 });
 
-app.get("/hello", (req, res) =>{
+// Handle unhandled promise rejections (e.g., database connection errors)
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Rejection:", err);
+  server.close(async () => {
+    await disconnectDB();
+    process.exit(1);
+  });
+});
 
-    res.json({message: "Hello World"});
+// Handle uncaught exceptions
+process.on("uncaughtException", async (err) => {
+  console.error("Uncaught Exception:", err);
+  await disconnectDB();
+  process.exit(1);
+});
+
+// Graceful shutdown
+process.on("SIGTERM", async () => {
+  console.log("SIGTERM signal received. Closing server gracefully...");
+  server.close(async () => {
+    await disconnectDB();
+    console.log("Server and database connection closed.");
+    process.exit(0);
+  });
 });
