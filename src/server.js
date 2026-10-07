@@ -1,9 +1,11 @@
 import express from "express"
 import { config } from "dotenv";
+import { connectDB, disconnectDB } from "./config/db.js";
 
 import movieRoutes from "./routes/movieRoutes.js";
 
 config();
+connectDB();
 
 const app = express()
 
