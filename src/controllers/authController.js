@@ -40,4 +40,19 @@ res.status(201).json({
 })
 
 };
-export {register};
+
+
+const login = async (req, res) => {
+    const { email, password } = req.body;
+
+
+    const user = await prisma.user.findUnique({
+        where: { email: email },
+    });
+
+    if(!user){
+        return res.status(400).json({error: "Invalid Email or Password"});
+    };
+
+};
+export {register, login};
