@@ -101,7 +101,7 @@ import { PrismaClient } from "@prisma/client";
 const main = async  () => {
     console.log("Seeding movies...");
 
-    for(movie of movies){
+    for(const movie of movies){
         await prisma.movie.create({
             data:movie,
         });
