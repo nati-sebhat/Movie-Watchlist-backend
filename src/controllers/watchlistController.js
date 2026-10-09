@@ -1,4 +1,4 @@
-import { prisma, Prisma } from "../config/db.js";
+import { prisma} from "../config/db.js";
 
 
 const addToWatchlist = async (req, res) => {
