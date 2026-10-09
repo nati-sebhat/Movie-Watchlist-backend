@@ -54,7 +54,7 @@ const removeFromWatchlist = async (req, res) => {
     }
 
 
-    if(watchlistItem.userId !== req.params.id){
+    if(watchlistItem.userId !== req.user.id){
       return res.status(403).json({
         error: "Not allowed to update watchlist item"
       });
