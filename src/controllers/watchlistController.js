@@ -60,7 +60,7 @@ const updateWatchlistItem = async (req, res) => {
     return res.status(403).json({error: "Not allowed to update this watchlist item"});
   }
 const updateData = {};
-  if (status !== undefined) updateData.status = status;
+  if (status !== undefined) updateData.status = status.toUppercase();
   if (rating !== undefined) updateData.rating = rating;
   if (notes !== undefined) updateData.notes = notes;
 

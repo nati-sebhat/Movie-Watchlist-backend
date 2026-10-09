@@ -61,7 +61,7 @@ model WatchlistItem {
 
 enum WatchlistStatus{
   PLANNED
-  Watching
-  Completed
-  Dropped
+  WATCHING
+  COMPLETED
+  DROPPED
 }
