@@ -8,6 +8,7 @@ const router = express.Router();
 router.use(authMiddleware)
 
 router.post("/", addToWatchlist);
+router.post("/:id, removeFromWatchlist")
 
 
 // router.post("/login",  login);

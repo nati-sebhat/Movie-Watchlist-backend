@@ -44,4 +44,34 @@ const addToWatchlist = async (req, res) => {
 
 };
 
+const removeFromWatchlist = async (req, res) => {
+    const watchlistItem = await prisma.watchlistItem.findUnique({
+      where: {id: req.params.id},
+    });
+
+    if(!watchlistItem){
+      return res.status(404).json({error: "Watchlsit item not found"});
+    }
+
+
+    if(watchlistItem.userId !== req.params.id){
+      return res.status(403).json({
+        error: "Not allowed to update watchlist item"
+      });
+    }
+
+    await prisma.watchlistItem.delete({
+      where: {id: req.params.id},
+    });
+    res.status(200).json({
+      status: "Success",
+      message: "Movie removed from watchlist",
+    });
+
+
+};
+
+
+
+
 export {addToWatchlist}
