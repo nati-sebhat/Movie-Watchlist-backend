@@ -6,7 +6,7 @@ const addToWatchlistSchema = z.object({
         error: () => ({
             message: "Status must be one of: PLANNED, WATCHING, COMPLETED, DROPPED",
         }),
-    }),optional(),
+    }).optional(),
     rating: z.coerce.number().int("Rating must be an integer")
     .min(1, "Rating must be between 1 and 10")
     .max(10, "Rating must be between 1 and 10")
