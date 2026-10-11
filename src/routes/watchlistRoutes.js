@@ -12,7 +12,7 @@ router.use(authMiddleware)
 router.post("/",validateRequest(addToWatchlistSchema), addToWatchlist);
 
 
-router.delete("/:id",validateRequest removeFromWatchlist)
+router.delete("/:id", removeFromWatchlist)
 
 
 router.put("/:id", updateWatchlistItem)
