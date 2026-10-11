@@ -1,4 +1,4 @@
-# Movie Watchlist Backend (`movie-watchlist-backend9`)
+# Movie Watchlist Backend 
 
 A production-ready RESTful API built with [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/), [Prisma](https://www.prisma.io/), and [PostgreSQL](https://www.postgresql.org/). This project features secure user authentication, complete movie management, and a personalized watchlist tracking system.
 
